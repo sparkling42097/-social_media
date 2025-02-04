@@ -1,2 +1,3 @@
 DB & model
 Messagelog 新增 Super_messagelogID 欄位，提供子留言功能所需的索引父留言欄位
+member_chatroom新增欄位Last_read_time，提供時間戳給已讀、未讀做判斷
