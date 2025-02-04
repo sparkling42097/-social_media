@@ -1,0 +1,55 @@
+Model更正
+Post => likedcount型別更正為Integer
+	messagecount型別更正為Integer
+	postcontent型別更正為String
+Member => postcount型別更正為Integer
+Collect => collectedcount型別更正為Integer
+Chatroom => 新增validateMembers，確立membera、memberb先後順序
+	另外新增ChatroomService、ChatroomRepository兩隻檔案對應該功能
+Messagelog => 刪除stickerid，改為@ManyToMany來維護
+Chatlog => 刪除chatlogid，改為@ManyToMany來維護
+Collect => 刪除collecterid，改為@ManyToMany來維護
+
+DB更正
+post => Liked_count新增UNSIGNED屬性
+	Message_count新增UNSIGNED屬性
+member => Post_count類型更正為int(30)
+	  刪除與collect的關聯
+messagelog => 刪除StickerID欄位
+chatlog => 刪除StickerID欄位
+collect => 刪除CollecterID欄位
+sticker => 刪除與chatlog、messagelog的關聯
+
+
+
+新增各model關聯關係，內容全部新增在最下面，原本的部分都沒有改動
+post 1 <=> 1 messageboard
+	有post才有messageboard(強關聯)
+	post有CascadeType.ALL
+	post有FetchType.LAZY
+member 1 <=> 多 post
+	雙向關係(可互相查詢)
+	member有CascadeType.ALL
+member 1 <=> 多 chatlog
+	雙向關係(可互相查詢)
+	member有CascadeType.ALL
+	member有FetchType.LAZY
+messagelog 多 <=> 1 messageboard
+	單向關係，只有messageboard可以查詢到messagelog
+	messageboard有CascadeType.ALL
+	messageboard的外鍵(MessagelogID)可以為null
+chatroom 1 <=> 多 chatlog
+	單向關係，只有chatroom可以查詢到chatlog
+	chatroom有CascadeType.REMOVE
+post 1 <=> 多 postphoto
+	post有CascadeType.ALL
+sticker 多 <=> 多 messagelog
+sticker 多 <=> 多 chatlog
+member 多 <=> 多 collect
+	member有CascadeType.ALL
+member 多 <=> 多 chatroom
+	member有CascadeType.ALL
+	member有FetchType.LAZY
+post 多 <=> 多 collect
+	post有CascadeType.ALL
+	post有FetchType.LAZY
