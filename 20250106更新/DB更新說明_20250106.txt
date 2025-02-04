@@ -1,0 +1,13 @@
+DB
+刪掉post表的Post_count欄位，member表新增Post_count欄位
+member新增21筆資料
+sticker新增109筆資料
+post新增2筆資料
+postphoto新增4筆資料
+
+
+
+model
+Member補上realname的getter&setter
+Post刪掉postcount
+Member新增postcount

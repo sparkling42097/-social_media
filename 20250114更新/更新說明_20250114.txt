@@ -1,0 +1,22 @@
+屬性檔新增
+spring.jpa.hibernate.ddl-auto=update
+	讓多對多(@ManyToMany)搜不到中間表時，hibernate自動生成中間表
+spring.jpa.show-sql=true
+	顯示 Hibernate 生成的所有 SQL 語句
+	讓你能夠看到實際執行的資料庫操作
+	在開發階段很有用，可以幫助你檢查 SQL 是否如預期執行
+spring.jpa.properties.hibernate.format_sql=true
+	格式化輸出的 SQL 語句，使其更易讀
+	SQL 會被美化排版，而不是顯示在一行
+	便於開發者查看和調試 SQL 語句
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+	明確指定使用 MySQL 方言
+	確保 Hibernate 生成的 SQL 語句與 MySQL 語法兼容
+	避免之前出現的方言版本不兼容問題
+
+model
+1.各表新添@Column(columnDefinition = "MEDIUMBLOB")
+	解決預設為BLOB，但資料表設計為MEDIUMBLOB的衝突問題
+2.Post、MessageBoard、Chatlog、PostPhoto表刪除重複映射的欄位
+
+
