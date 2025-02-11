@@ -1,0 +1,6 @@
+屬性檔新增
+spring.flyway.clean-before-migrate=true
+spring.flyway.clean-on-validation-error=true
+
+config新建DatabaseInitializer
+在執行flyway自動化遷移之前，自動刪除舊有資料庫
