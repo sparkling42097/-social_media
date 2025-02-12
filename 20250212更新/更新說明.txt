@@ -1,0 +1,11 @@
+model
+member 調換大頭貼結構順序，內容不變
+messagelog 刪除欄位messagetime、message
+
+DB，幾乎全改
+修改V1，刪除messagelog欄位messagetime、message
+簡化V3.01、3.02、3.03、3.04資料
+刪掉member表ID 6~20 的無效頭貼，為ID 1~5 新增新頭貼做測試，並且ID 1~5 的登入密碼為123456(BC加密)
+新增V4.01，給每則貼文預設一些按讚數，為排序作假資料展示
+新增V4.02，為V4.03的兩則貼文的留言數做更新
+新增V4.03檔案，提供給留言板使用
