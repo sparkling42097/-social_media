@@ -109,6 +109,7 @@ CREATE TABLE `messageboard` (
 DROP TABLE IF EXISTS `messagelog`;
 CREATE TABLE `messagelog` (
   `MessagelogID` int(30) UNSIGNED NOT NULL,
+  `Super_messagelogID` int(30) UNSIGNED DEFAULT NULL COMMENT '父留言',
   `Message_file` mediumblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
