@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" >
+    <link  rel="stylesheet" href="/css/Page.css">
+</head>
+<body>
+
+    <div class="Login-Page">
+      <!-- 作品名 -->
+        <h1>作品名</h1>
+        
+        <!-- 錯誤訊息 -->
+        <div class="error-message">
+		    <h3 th:if="${error != null}" th:text="${error}"></h3>
+		</div>
+        
+        <form th:action="@{/login}" th:object="${member}" method="post">
+        
+         <!-- 帳號 -->
+        <div class="form-floating">
+            <input name="account" type="email" class="form-control"  placeholder="輸入帳號" th:field="*{email}"/>
+        </div>
+        
+         <!-- 密碼 -->
+        <div class="form-floating">
+            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="輸入密碼"  th:field="*{password}"/>
+            <i id="checkEye" class="fas fa-eye"></i>
+        </div>
+        
+         <button class="btn" type="submit">登入</button>
+        </form>
+       
+       
+		<!-- 註冊/忘記密碼轉跳 -->
+        <div class="btn-group">
+		    <button onclick="location.href='/registerpage'" class="btn btn-primary">註冊</button>
+		    <button onclick="location.href='/forgotPassword'" class="btn btn-primary">忘記密碼</button>
+		</div>
+        <hr>
+
+        <!-- 社群圖片 -->
+        <div class="social-icons">
+            <button>
+                <i class="fab fa-facebook-f"></i>
+            </button>
+            <a href="/oauth2/authorization/google">
+            <button>
+                <i class="fab fa-google"></i>
+            </button>
+            </a>
+            <button>
+                <i class="fab fa-twitter"></i>
+            </button>
+        </div>
+    </div>
+    
+	<script src="/js/PasswordEye.js"></script>
+     
+</body>
+</html>

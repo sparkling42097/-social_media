@@ -1,0 +1,354 @@
+
+.popup-header .button-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 200px; /* 固定寬度 */
+}
+
+.popup-header h3 {
+    flex: 0 0 auto;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.popup-header .close {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.edit-mode-btn {
+    background: transparent;
+    border: none;
+    color: #0095f6;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 8px 12px;
+    white-space: nowrap;
+}
+
+.sort-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.sort-type-select,
+.sort-order-select {
+    flex: 1;
+    padding: 10px;
+    background: #363636;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sort-type-select option,
+.sort-order-select option {
+    background: #262626;
+}
+
+.delete-btn {
+    background: #ed4956;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 15px;
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.delete-btn.show {
+    display: block;
+}
+
+
+.delete-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+.toast.success {
+    background-color: #4CAF50;
+}
+
+.toast.error {
+    background-color: #f44336;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.content-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.content-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content-list::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+.content-list::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+.list-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 20px 16px 60px;
+    border-bottom: 1px solid #363636;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    position: relative;
+    margin: 0;
+    width: 100%;
+}
+
+.list-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.list-item:active {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.list-item.touch-active {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.list-item .checkbox {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border: 2px solid #666;
+    border-radius: 4px;
+    display: none;
+}
+
+.list-item.edit-mode {
+    padding-left: 60px;
+    cursor: default; /* 在編輯模式下移除整體的指針樣式 */
+}
+
+.list-item.edit-mode .checkbox {
+    display: block;
+}
+
+.list-item.selected .checkbox {
+    background: #0095f6;
+    border-color: #0095f6;
+}
+
+
+.list-item.selected .checkbox::after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.item-info {
+    flex: 1;
+    padding-right: 12px;
+}
+
+.post-date {
+    font-size: 13px;
+    color: #8e8e8e;
+    margin-bottom: 6px;
+}
+
+.description {
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    word-break: break-word;
+    max-width: 580px;
+}
+
+.post-stats {
+    display: flex;
+    gap: 16px;
+    color: #8e8e8e;
+    font-size: 13px;
+}
+
+.post-image {
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    transition: transform 0.2s ease;
+}
+
+.list-item:hover .post-image {
+    transform: scale(1.02);
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.loading-more, 
+.end-message,
+.no-content {
+    padding: 16px;
+    position: sticky;
+    bottom: 0;
+    background: #262626;
+    border-top: 1px solid #363636;
+}
+
+.end-message {
+    border-top: 1px solid #363636;
+    margin-top: 10px;
+}
+
+.loading {
+    color: #0095f6;
+}
+
+.delete-confirmation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #262626;
+    padding: 32px;
+    border-radius: 12px;
+    text-align: center;
+    z-index: 1002;
+    display: none;
+    min-width: 400px;
+    border: 1px solid #363636;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.delete-confirmation.show {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.delete-confirmation p {
+    margin: 0 0 24px 0;
+    color: white;
+    font-size: 16px;
+}
+
+.delete-confirmation .buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.delete-confirmation button {
+    padding: 10px 24px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: opacity 0.2s ease;
+}
+
+.delete-confirmation button:hover {
+    opacity: 0.9;
+}
+
+.delete-confirmation .confirm {
+    background: #ed4956;
+    color: white;
+}
+
+.delete-confirmation .cancel {
+    background: #363636;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.delete-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 1001;
+}
+
+.delete-overlay.show {
+    visibility: visible;
+    opacity: 1;
+}

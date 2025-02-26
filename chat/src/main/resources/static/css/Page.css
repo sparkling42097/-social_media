@@ -1,0 +1,182 @@
+@import url('http://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+#message {
+    color: red; /* 設置文字顏色為紅色 */
+}
+
+body {
+    font-family: "Noto Sans TC", serif;
+}
+a { 
+    color: #268dd1;
+    font-family: "Noto Sans TC", serif;
+    text-decoration: none
+}
+
+p {
+    font-family: "Noto Sans TC", serif;
+    color: white;
+}
+
+.form-floating {
+    position: relative;
+    width: 91.5%;
+}
+
+/* 眼睛圖示 */
+#checkEye {
+    position: absolute;
+    top: 64%;
+    right: -15px;
+    transform: translateY(-100%);
+    cursor: pointer;
+}
+
+/* 背景 */
+body {
+    /* 背景色 */
+    background-color: #232121;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 登入頁面 */
+.Login-Page {
+    background-color: #383838;
+    padding: 60px;
+    /*內框大小*/
+    border: 2px solid rgba(87, 87, 87, 0.329);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* 標題 */
+h1 {
+    color: #ffffff;
+    /* 標題色 */
+    font-size: 45px;
+    /*字體大小*/
+    margin-bottom: 20px;
+    margin-top: 0px;
+    /*底邊距離*/
+    font-family: "Noto Sans TC", serif;
+
+}
+
+/* 輸入框樣式 */
+.form-control {
+    background-color: rgb(190, 188, 188);
+    /* 輸入框背景色 */
+    margin: 5px 0;
+    /*底邊距離*/
+    font-size: 18px;
+    /*輸入框字形大小*/
+
+    border-radius: 5px;
+    /*圓角  不要則刪除*/
+    border: solid #888181;
+    /* 輸入框邊框色 */
+
+    padding: 15px;
+    width: 93%;
+
+    padding-right: 40px;
+    /* 眼距 */
+}
+
+/* 登入按鈕 */
+.btn {
+    background-color: #5598da;
+    /* 登入按鈕顏色 */
+    color: white;
+    /* 登入按鈕字體顏色 */
+    margin: 8px 0;
+    padding: 15px;
+    /* 內邊距(寬度) */
+    width: 100%;
+    /* 長度 */
+    font-family: "Noto Sans TC", serif;
+    font-size: 18px;
+    /*字體大小*/
+    border-radius: 5px;
+    /*圓角  不要則刪除*/
+
+    border: none;
+    /*邊框顏色*/
+    cursor: pointer;
+    /*鼠標形狀*/
+}
+
+.btn:hover {
+    background-color: #0a519c;
+    /* 登入按鈕停留顏色 */
+}
+
+/* 註冊 / 忘記密碼 這欄*/
+.btn-group {
+    margin-top: 2px;
+    /*上邊距*/
+    font-family: "Noto Sans TC", serif;
+
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.btn-group .btn {
+    width: 48%;
+    /*寬度*/
+}
+
+/* 圖標 */
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons button {
+    color: #774ce4;
+    /*圖標顏色*/
+    font-size: 24px;
+    /*大小*/
+    margin: 0 10px;
+    /*外邊距*/
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.social-icons button:hover {
+    color: #790693;
+    /*圖標停留顏色*/
+}
+
+h3 {
+	font-family: "Noto Sans TC", serif;
+    color: #ff0000;
+}
+
+.back-button {
+    font-family: "Noto Sans TC", serif;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+}
+
+
+

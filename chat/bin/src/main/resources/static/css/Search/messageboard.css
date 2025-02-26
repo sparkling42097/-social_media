@@ -1,0 +1,84 @@
+.postStreamBox{
+	color:white;
+}
+
+.dfrespond{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    /* background-color: aqua; */
+}
+.dcrespond{
+    position: relative;
+    left: 10%;
+    width: 90%;
+    height: 20%;
+    /* background-color: aqua; */
+}
+
+.memberphotospace{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    font-size: 1vw;
+    /* background-color: green; */
+}
+
+.memberphoto{
+	width: 100%;
+    height: 100%;
+	object-fit: cover;
+}
+
+.username{
+    position: relative;
+    top: -30px;
+    left: 10%;
+    width: 75%;
+    height: 30px;
+    font-size: 1.1vw;
+    /* background-color: blue; */
+}
+
+.love{
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    width: 5%;
+    font-size: 1vw;
+    /* background-color: pink; */
+}
+
+.myTime{
+    position: absolute;
+    bottom: 1px;
+    left: 6%;
+    height: 30%;
+    width: 10%;
+    font-size: 1vw;
+    /* background-color: orange; */
+}
+
+.respond{
+    position: absolute;
+    bottom: 1px;
+    left: 17%;
+    height: 30%;
+    width: 10%;
+    font-size: 1vw;
+    /* background-color: red; */
+}
+
+.memberrespond{
+    position: absolute;
+    top: 32%;
+    width: 100%;
+    height: 30%;
+    font-size: 1vw;
+    /* background-color: blueviolet; */
+}
+
+.ra{
+	white-space: nowrap; /* 防止 <a> 內的內容換行 */
+    display: inline; /* 確保 <a> 不會影響行內元素排列 */
+}

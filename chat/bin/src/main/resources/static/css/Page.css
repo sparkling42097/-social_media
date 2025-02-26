@@ -1,0 +1,212 @@
+		a {
+		
+		text-decoration: none
+		}
+
+
+
+        .form-floating {
+            position: relative;
+            width: 91.5%;
+        }
+         /* 眼睛圖示 */
+        #checkEye {
+            position: absolute;
+            top: 64%;
+            right: -15px;
+            transform: translateY(-100%);
+            cursor: pointer;
+        }
+
+        /* 背景 */
+        body {
+             /* 背景色 */
+            background-image: linear-gradient(to right, #ff8867 0%, #fae994 100%);
+           
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* 登入頁面 */
+        .Login-Page {
+            background-image: linear-gradient(to top, #fff1eb 0%, #bfe7fa 100%);
+            padding: 60px;    /*內框大小*/
+            border: 2px solid black;  /*黑框*/
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* 標題 */
+        h1 {
+            color: #232121;     /* 標題色 */
+            font-size: 40px;      /*字體大小*/
+            margin-bottom: 20px;  /*底邊距離*/
+            
+        }
+
+        /* 輸入框樣式 */
+        .form-control {
+            background-color: rgb(190, 188, 188);  /* 輸入框背景色 */
+            margin: 5px 0;                /*底邊距離*/
+            font-size: 18px;              /*輸入框字形大小*/
+           
+            border-radius: 5px;           /*圓角  不要則刪除*/
+            border:  solid #888181;     /* 輸入框邊框色 */  
+            
+            padding: 15px;
+            width: 93%;
+
+            padding-right: 40px;          /* 眼距 */
+        }
+
+        /* 登入按鈕 */
+        .btn {
+            background-color: #5598da;  /* 登入按鈕顏色 */
+            color: white;               /* 登入按鈕字體顏色 */     
+            margin: 8px 0;
+            padding: 15px;                /* 內邊距(寬度) */
+            width: 100%;                  /* 長度 */
+           
+            font-size: 18px;              /*字體大小*/ 
+            border-radius: 5px;           /*圓角  不要則刪除*/  
+         
+            border: none;                 /*邊框顏色*/
+            cursor: pointer;              /*鼠標形狀*/
+        }
+
+        .btn:hover {
+            background-color: #0a519c;  /* 登入按鈕停留顏色 */
+        }
+
+        /* 註冊 / 忘記密碼 這欄*/
+        .btn-group {
+            margin-top: 2px;   /*上邊距*/
+            
+			
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
+	   .btn-group .btn {
+	            width: 48%;        /*寬度*/
+	        }
+
+        /* 圖標 */
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons button {
+            color: #774ce4;       /*圖標顏色*/
+            font-size: 24px;        /*大小*/
+            margin: 0  10px;        /*外邊距*/
+            
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .social-icons button:hover {
+            color: #790693;          /*圖標停留顏色*/
+        }
+       
+        h3 {
+           color: #ff0000; 
+        }
+        
+         .back-button {
+     
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+        
+        
+        /*       
+        
+        
+        
+        
+        */
+        /* 響應式設計 */
+
+		/* 手機 */
+		@media (max-width: 767px) {
+   
+			    .Login-Page {
+			        width: 80%;
+			        padding: 40px;
+			         
+			    }
+			
+			    h1 {
+			        font-size: 35px;
+			    }
+			
+			    .form-control {
+			        font-size: 17px;
+			        width: 89%;
+			        max-width: 100px; /* 最大寬度 */
+    				min-width: 250px; 
+			    }
+			
+			    .btn {
+			        font-size: 17px;
+			        padding: 14px;
+			    }
+			
+			    .btn-group .btn {
+			        width: 48%;
+			    }
+			
+			    .social-icons button {
+			        font-size: 22px;
+			    }
+			}
+
+		
+		/* 平板 (768px 到 1024px) */
+		@media (min-width: 768px) and (max-width: 1024px) {
+		    .Login-Page {
+		        width: 80%; /* 增加頁面寬度 */
+		        padding: 40px;
+		    }
+		
+		    h1 {
+		        font-size: 35px; /* 調整標題字體大小 */
+		    }
+		
+		    .form-control {
+		        font-size: 17px; /* 調整輸入框字型大小 */
+		    }
+		
+		    .btn {
+		        font-size: 17px; /* 調整按鈕字型大小 */
+		        padding: 14px; /* 調整按鈕內邊距 */
+		    }
+		
+		    .btn-group .btn {
+		        width: 48%; /* 保持按鈕大小 */
+		    }
+		
+		    .social-icons button {
+		        font-size: 22px; /* 調整社交圖標大小 */
+		    }
+		}
+		        
+		        

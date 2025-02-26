@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link  rel="stylesheet" href="/css/Page.css">
+</head>
+<body>
+    <div class="Login-Page">
+      <!-- 作品名 -->
+        <h1>Interflow</h1>
+        
+        <!-- 錯誤訊息 -->
+        <h3 th:if="${error != null}" th:text="${error}"></h3>
+        
+        <!-- 表單 -->
+        <form form th:action="@{/reg_submit}" th:object="${member}" method="post">
+       
+        <!-- 輸入框 -->
+        <div class="form-floating">
+            <input type="text" class="form-control"  placeholder="輸入姓名" th:field="*{realname}" required/>
+            <input type="text" class="form-control"  placeholder="輸入用戶名稱" th:field="*{membername}" required/>
+            <input type="email" class="form-control" placeholder="輸入信箱" th:field="*{email}" required/>
+        </div> 
+
+        <div class="form-floating">
+	        <input type="password" class="form-control" id="floatingPassword" placeholder="輸入密碼" th:field="*{password}" required/>
+	        <i id="checkEye" class="fas fa-eye"></i>
+        </div>
+        
+        <!-- 同意文字 -->
+        <p>註冊即表示你同意我們的
+        <a  href="https://help.instagram.com/581066165581870/?locale=zh_TW" target="_blank">《服務條款》</a>、
+        <a  href="https://www.facebook.com/privacy/policy" target="_blank">《Cookie 政策》</a>和
+        <a  href="https://privacycenter.instagram.com/policies/cookies/" target="_blank">《Cookie 政策》</a><p/>
+        <button class="btn"  type="submit">註冊</button>
+        </form>                       
+      
+        <hr>
+        <br>
+        <a  class="back-button" th:href="@{/loginpage}" style="font-size:25px;">返回登入頁面</a>
+
+      <script src="/js/PasswordEye.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+.sidebar {
+    position: relative;
+    width: 200px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    height: 100%;
+    border-right: 1px solid rgb(36, 36, 36);
+    z-index: 1;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.menu-item {
+    /* text-align: center; */
+    margin: 10px -10px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background-color: #444;
+    border-radius: 4px;
+}
+
+
+.submenu {
+    font-family: "Noto Sans TC", serif;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 400px;
+    background-color: black;
+    height: 100%;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease;
+}
+
+.submenu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.submenu a:hover {
+    background-color: #555;
+}
+
+.submenu.open {
+    border-right: 1px solid rgb(36, 36, 36);
+    left: 200px;
+}
+
+/* svg{
+    width : 20px;
+    height : 30px;
+} */
+
+.menu-item a {
+    font-size: 18px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    /* margin: 10px 0px; */
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+
+a {
+    font-family: "Noto Sans TC", serif;
+    display: flex;
+    align-items: center; 
+}
+
+a svg {
+    margin-right: 5px; 
+    /* margin-top: -4px; */
+    margin-left: 10px;
+}
+

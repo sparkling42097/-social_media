@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- WebSocket libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <!-- css -->
+    <link href="css/chat.css" rel="stylesheet">
+
+    <title>聊天室</title>
+</head>
+
+<body>
+    <div class="chatroom-container" th:with="currentUser=${session.member}">
+        <!-- 左側：好友列表 -->
+        <div class="friends-list">
+            <!-- 內距3，border-bottom 在元素底部加上一條邊框線 -->
+            <div class="friendslist-header">
+                <!-- mb-0 是 margin-bottom 的縮寫，0 表示移除底部的外邊距 -->
+                <h5 class="mb-0">聊天室</h5>
+            </div>
+            <div id="friendsList">
+                <!-- 好友列表會由 JavaScript 動態生成 -->
+            </div>
+        </div>
+        <!-- 右側：聊天視窗 -->
+        <div class="chat-window" id="chatWindow">
+            <!-- 聊天視窗標題欄 -->
+            <div class="chat-header">
+                <!-- d-flex : display:flex align-items-center : 靠交錯軸置中對齊 w-100 : 確保寬度為100% -->
+                <div class="d-flex align-items-center w-100">
+                    <!-- 聊天對象的頭像 -->
+                    <!-- <img th:src="${avatarBase64}" alt="member Avatar" /> -->
+                    <div class="friend-avatar ms-3" id="chatAvatar"></div>
+                    <!-- 聊天對象的名稱 -->
+                    <div><h6 class="mb-0" id="chatName"></h6></div>
+                </div>
+            </div>
+            <!-- 訊息顯示區 -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- 訊息內容會由 JavaScript 動態添加 -->
+            </div>
+            <!-- 訊息輸入區 -->
+            <div class="chat-input">
+                <!-- 將表單控制元件（如輸入框）和附加元素（如按鈕）組合在一起 -->
+                <div class="input-group">
+                    <!-- form-control : 輸入框的類型 onkeypress="handleKeyPress(event)" : 
+                     判斷是否是 Enter 鍵被按下 -->
+                    <input type="text" class="form-control" placeholder="輸入訊息..." id="messageInput"
+                        onkeypress="handleKeyPress(event)">
+
+                    <!-- 發送按鈕 -->
+                    <!-- btn-primary : 主要按鈕(藍) fa-paper-plane : 紙飛機圖示 -->
+                    <button class="btn btn-primary" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chat.js"></script>
+</body>
+
+</html>

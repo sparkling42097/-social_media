@@ -1,0 +1,312 @@
+/* 字體顏色 */
+.friendslist-header h5 {
+    color: WhiteSmoke;
+}
+
+/* --------------------------------------------------------------------------- */
+/* 主容器樣式 */
+.chatroom-container {
+    display: flex;
+    /* 使用 Flexbox 進行左右布局 */
+    height: 100vh;
+    /* 設定高度為視窗高度，確保填滿整個畫面 */
+    max-width: 1400px;
+    /* 限制最大寬度，避免在超寬螢幕上過於拉伸 */
+    margin: 0 auto;
+    /* 居中 */
+}
+
+/* 好友列標題 */
+.friendslist-header {
+    padding: 22px;
+    border-bottom: 2px solid WhiteSmoke;
+}
+
+/* 好友列表區域 */
+.friends-list {
+    background: #161616;
+    /* 背景 */
+    width: 350px;
+    /* 固定寬度 */
+    height: 100vh;
+    /* 填滿整個視窗高度 */
+    border-right: 2px solid WhiteSmoke;
+    /* 添加右側邊框 */
+
+    box-shadow: -10px 0 10px -5px
+        /* 左側陰影 */
+        rgba(17, 0, 255, 0.2);
+}
+
+/* 好友列表項目 */
+/* js產生 */
+.friend-item {
+    display: flex;
+    align-items: center;
+    /* 垂直置中 */
+    padding: 15px;
+    cursor: pointer;
+    /* 滑鼠指標變為手型 */
+    border-bottom: 2px solid WhiteSmoke;
+    color: whitesmoke;
+    /* 字體顏色 */
+}
+
+.friend-item:hover {
+    background: rgb(118, 118, 118);
+    /* 懸停時變更背景色 */
+}
+
+/* 好友頭像 */
+.friend-avatar {
+    width: 48px;
+    /* 正方形元素，為了適應border-radius */
+    height: 48px;
+    /* 正方形元素，為了適應border-radius */
+    background: BurlyWood;
+    border-radius: 50%;
+    /* 圓形頭像(50%為圓形) */
+    color: WhiteSmoke;
+    display: flex;
+    align-items: center;
+    /* 內容垂直置中 */
+    justify-content: center;
+    /* 內容水平置中 */
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 15px;
+    /* flex-shrink: 0; */
+    /* 避免頭像壓縮 */
+}
+
+/* 聊天視窗 */
+/* +----------------+
+   |    標題區      |  <-- 固定高度
+   +----------------+
+   |                |
+   |   訊息區域      |  <-- 會自動填滿剩餘空間
+   |                |
+   +----------------+
+   |    輸入區      |  <-- 固定高度
+   +----------------+ */
+
+.chat-window {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* flex 子元素的排列方向為垂直(預設是 row) */
+    background: #262626;
+
+    box-shadow: 10px 0 10px -5px
+        /* 右側陰影 */
+        rgba(17, 0, 255, 0.2);
+}
+
+.chat-window.active {
+    right: 0;
+    /* 顯示時移動到視窗內 */
+}
+
+/* 聊天視窗標題欄 */
+.chat-header {
+    padding: 10px;
+    border-bottom: 2px solid WhiteSmoke;
+    display: flex;
+    align-items: center;
+    /* 垂直居中 */
+    z-index: 1;
+    /* 確保在滾動時保持在上層 */
+    color: whitesmoke;
+}
+
+.back-button:hover {
+    color: WhiteSmoke;
+}
+
+/* 訊息區 */
+.chat-messages {
+    flex: 1;
+    /* 佔用剩餘空間 */
+    overflow-y: auto;
+    /* 允許垂直滾動 */
+}
+
+/* 訊息 */
+/* js產生 */
+.message {
+    position: relative;
+    margin-bottom: 20px;
+    /* 增加底部邊距，為時間戳預留空間 */
+    width: fit-content;
+    /* 寬度符合內容 */
+    max-width: 70%;
+    /* 最大寬度限制 */
+    margin-bottom: 20px;
+    /* 訊息間距 */
+    padding: 8px 12px;
+    /* 內部間距 */
+    line-height: 1.4;
+    /* 行高 */
+    font-size: 14px;
+    /* 文字大小 */
+    word-wrap: break-word;
+    /* 處理大多數換行情況 */
+    word-break: break-all;
+    /* 允許在任何字符間換行 */
+    overflow-wrap: break-word;
+    /* 確保長單詞也能換行 */
+
+    /* 增加上下間距 */
+    margin-top: 15px;
+    /* 上方間距 */
+    margin-bottom: 25px;
+    /* 下方間距，稍微大一點以容納時間戳 */
+}
+
+/* 送訊息 */
+/* js產生 */
+.message.sent {
+    background: #95EC69;
+    /* LINE風格的綠色 */
+    color: #000000;
+    /* 黑色文字 */
+    margin-left: auto;
+    /* 靠右對齊 */
+    border-radius: 15px 0 15px 15px;
+    /* 右上不要圓角 */
+    margin-right: 10px;
+    /* 右側間距 */
+}
+
+/* 收訊息 */
+/* js產生 */
+.message.received {
+    background: #ffffff;
+    /* 白色背景 */
+    color: #000000;
+    /* 黑色文字 */
+    border-radius: 0 15px 15px 15px;
+    /* 左上不要圓角 */
+    margin-left: 10px;
+    /* 左側間距 */
+}
+
+/* 輸入框區域 */
+.chat-input {
+    padding: 15px;
+    border-top: 2px solid whitesmoke;
+    z-index: 1;
+    /* 確保在滾動時保持在上層 */
+}
+
+.input-group .form-control {
+    border-radius: 30px;
+}
+
+.input-group .form-control:focus {
+    /* focus : 偽類 */
+    /* 1. 水平偏移（x軸），0 表示不向左或右偏移
+       2. 垂直偏移（y軸），向下偏移
+       3. 模糊半徑，陰影的模糊程度
+       4. rgba(  ,  ,  , 0.1) - 陰影顏色，透明度為 0.1（10%）*/
+    box-shadow: 0 3px 8px rgba(111, 0, 255, 0.2);
+}
+
+.input-group .btn {
+    background: #5b6af0;
+}
+
+/* 訊息時間戳 */
+.message-time {
+    font-size: 11px;
+    /* 較小的字體 */
+    color: #8E8E8E;
+    /* 淺灰色 */
+    margin-top: 4px;
+    /* 與訊息的間距 */
+    position: absolute;
+    bottom: -18px;
+    /* 位於訊息下方 */
+    white-space: nowrap
+}
+
+/* 發送訊息的時間戳位置 */
+.message.sent .message-time {
+    right: 0;
+    /* 靠右對齊 */
+}
+
+/* 接收訊息的時間戳位置 */
+.message.received .message-time {
+    left: 0;
+    /* 靠左對齊 */
+}
+
+/* 訊息區域調整 */
+.chat-messages {
+    padding: 20px 10px;
+    /* 給訊息區域一些間距 */
+}
+
+/* 針對聊天訊息區域的滾動條樣式 */
+.chat-messages::-webkit-scrollbar {
+    width: 8px;
+    /* 滾動條寬度 */
+}
+
+/* 滾動條軌道 */
+.chat-messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    /* 半透明的軌道 */
+    border-radius: 4px;
+}
+
+/* 滾動條滑塊 */
+.chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    /* 半透明的滑塊 */
+    border-radius: 4px;
+}
+
+/* 滾動條滑塊懸停效果 */
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+    /* 懸停時更明顯 */
+}
+
+/* 日期分隔線 */
+.date-separator {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.date-separator::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);  /* 淺色分隔線 */
+}
+
+.date-separator span {
+    background: #262626;  /* 與聊天室背景色相同 */
+    padding: 0 10px;
+    color: #8E8E8E;  /* 淺灰色文字 */
+    font-size: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 初始狀態隱藏聊天視窗的頭像但保留空間 */
+#chatAvatar {
+    visibility: hidden;
+}
+
+/* 當選擇聊天室時才顯示頭像 */
+#chatAvatar.active {
+    visibility: visible;
+}

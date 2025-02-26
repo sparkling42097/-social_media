@@ -1,0 +1,90 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    /* color: black; */
+}
+
+section {
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    /* margin: 20px auto; */
+    overflow: hidden;
+}
+
+section>div {
+    float: left;
+    background-color: transparent;
+    /* background-color: gainsboro; */
+}
+
+.left {
+    width: 13vw;
+    height: 100vh;
+    /* background-color: antiquewhite; */
+}
+
+.left-block{
+    width: 19vw;
+    height: 100vh;
+    /* background-color: burlywood; */
+}
+
+.right-block{
+    width: 28vw;
+    height: 100vh;
+    /* background-color: cyan; */
+}
+
+.middle {
+    width: 40vw;
+    height: 100vh;
+    /* background-color: rgb(238, 5, 5); */
+    color: white;
+}
+
+.middle-top{
+    width: 40vw;
+    height: 5vh;
+    background-color: blueviolet;
+}
+
+.middle-main{
+    width: 40vw;
+    height: 95vh;
+    background-color: forestgreen;
+}
+/* ----------------------------------------- */
+
+/* ---------------------------------- */
+
+/* 滾動條造型 */
+/* body::-webkit-scrollbar{
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track{
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb{
+    background: #6449b8;
+} */
+
+/* ---------------------- */
+

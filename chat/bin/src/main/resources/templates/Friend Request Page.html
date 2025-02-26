@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Friend Request</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <style>
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            display: none;
+        }
+        .request-list {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .request-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn {
+            padding: 5px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .btn-accept {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-reject {
+            background-color: #f44336;
+            color: white;
+        }
+        .btn-add {
+            background-color: #2196F3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="notification" class="notification"></div>
+    
+    <div>
+        <h3>發送好友請求</h3>
+        <input type="number" id="targetMemberId" placeholder="輸入會員ID">
+        <button onclick="sendFriendRequest()" class="btn btn-add">發送請求</button>
+    </div>
+
+    <div class="request-list">
+        <h3>待處理的好友請求</h3>
+        <div id="requestList"></div>
+    </div>
+
+    <script>
+        let stompClient = null;
+
+        function connect() {
+            const socket = new SockJS('/ws');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                
+                stompClient.subscribe('/user/queue/notifications', function(notification) {
+                    const notificationData = JSON.parse(notification.body);
+                    showNotification(notificationData.message);
+                    fetchPendingRequests();
+                });
+
+                fetchPendingRequests();
+            });
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        async function sendFriendRequest() {
+            const targetId = document.getElementById('targetMemberId').value;
+            if (!targetId) {
+                showNotification('請輸入會員ID');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/friend/send/${targetId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    const error = await response.text();
+                    throw new Error(error);
+                }
+
+                showNotification('好友請求已發送');
+                document.getElementById('targetMemberId').value = '';
+            } catch (error) {
+                showNotification(error.message);
+            }
+        }
+
+        async function fetchPendingRequests() {
+            try {
+                const response = await fetch('/api/friend/pending');
+                if (!response.ok) {
+                    throw new Error('獲取待處理請求失敗');
+                }
+                const requests = await response.json();
+                updateRequestList(requests);
+            } catch (error) {
+                console.error('Error fetching requests:', error);
+                showNotification(error.message);
+            }
+        }
+
+        function updateRequestList(requests) {
+            const requestList = document.getElementById('requestList');
+            
+            if (!requests || requests.length === 0) {
+                requestList.innerHTML = '<p>沒有待處理的請求</p>';
+                return;
+            }
+            
+            requestList.innerHTML = requests.map(request => {
+                return `
+                    <div class="request-item">
+                        <span>來自會員 ID: ${request.membera}</span>
+                        <div>
+                            <button onclick="handleRequest(${request.chatroomid}, 'accept')" class="btn btn-accept">接受</button>
+                            <button onclick="handleRequest(${request.chatroomid}, 'reject')" class="btn btn-reject">拒絕</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function handleRequest(chatroomId, action) {
+            try {
+                const response = await fetch(`/api/friend/${action}/${chatroomId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    const error = await response.text();
+                    throw new Error(error);
+                }
+
+                showNotification(action === 'accept' ? '已接受好友請求' : '已拒絕好友請求');
+                fetchPendingRequests();
+            } catch (error) {
+                console.error('Error handling request:', error);
+                showNotification(`處理請求失敗: ${error.message}`);
+            }
+        }
+
+        window.onload = connect;
+    </script>
+</body>
+</html>

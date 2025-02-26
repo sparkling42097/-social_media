@@ -1,0 +1,199 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s ease;
+    background-color: black;
+    color: black;
+}
+
+section {
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    /* margin: 20px auto; */
+    overflow: hidden;
+}
+
+section>div {
+    float: left;
+    background-color: transparent;
+    /* background-color: gainsboro; */
+}
+
+.left {
+    width: 13vw;
+    height: 100vh;
+    /* background-color: antiquewhite; */
+}
+
+.left-block{
+    width: 19vw;
+    height: 100vh;
+    /* background-color: burlywood; */
+}
+
+.right-block{
+    width: 28vw;
+    height: 100vh;
+    /* background-color: cyan; */
+}
+
+.middle {
+    width: 40vw;
+    height: 100vh;
+    /* background-color: rgb(238, 5, 5); */
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.middle-top{
+    /* width: 40vw; */
+    min-height: 80px;
+    flex-shrink: 0; /* 防止壓縮 */
+    height: 10vh;
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 20px 20px 0 0;
+    /* background-color: blueviolet; */
+}
+
+/* .middle-main{
+    width: 40vw;
+    height: 90vh;
+    background-color: forestgreen;
+    overflow-y: auto;
+    padding: 20px;
+} */
+/* ----------------------------------------- */
+
+.middle-main {
+    flex: 1; /* 讓 middle-main 填滿剩餘空間 */
+    overflow-y: auto; /* 啟用垂直滾動 */
+    border-radius: 0 0 20px 20px;
+    padding: 20px;
+    /* 添加捲動條樣式 */
+    scrollbar-width: thin;
+    scrollbar-color: #666 #333;
+    background-color: rgba(128, 128, 128, 0.1);
+    z-index: 1000;
+}
+
+/* 自定義捲動條樣式 (WebKit瀏覽器) */
+.middle-main::-webkit-scrollbar {
+    width: 8px;
+}
+
+.middle-main::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.middle-main::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+}
+
+.middle-main::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+.action-buttons {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.image-box {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #1a1a1a;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.load-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 15px;
+    background: none !important;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    outline: none;
+}
+
+.load-more svg {
+    fill: #FFFFFF;
+    width: 24px;
+    height: 24px;
+}
+
+.load-more:hover {
+    transform: scale(1.1);
+    background: none !important;
+}
+
+.load-more:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.load-more.loading svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+.no-results {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-size: 16px;
+}
