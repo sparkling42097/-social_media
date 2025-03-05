@@ -140,7 +140,6 @@ async function createPostPage(postData) {
     postPage.style.justifyContent = 'center';
     postPage.style.alignItems = 'center';
     postPage.style.zIndex = '1000';
-
     // 更新的內容結構
     postPage.innerHTML = `
         <div id=${postData.postId} class="post" style="position: relative; width: 65%; height: 95%; background-color: black; border: 2px solid rgb(145, 144, 144); border-radius: 10px; display: flex;">
@@ -162,22 +161,22 @@ async function createPostPage(postData) {
                 </div>
                 
                 <div class="postMain" style="width: 100%; height: 36%; border-bottom: 1px solid rgb(145, 144, 144); display: flex; flex-direction: column; justify-content: space-between;">
-                    <div style="color: white; padding: 20px; overflow-y: auto; flex-grow: 1; word-wrap: break-word; word-break: break-all;">
+                    <div style="color: white; padding: 20px; overflow-y: auto; flex-grow: 1; word-wrap: break-word; word-break: break-all; white-space: pre-line;">
                         ${postData.content || ''}
                     </div>
                 </div>
                 
                 <div class="goodList" style="width: 100%; height: 8%; border-bottom: 1px solid rgb(145, 144, 144);">
-                    <div style="color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
-                        <div style="color: #888;">
+                    <div style="color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="color: #888; font-size: 1vw;">
                             發布時間：${formatPostTime(postData.postTime)}
                         </div>
                         <div style="display: flex; gap: 15px;">
-                            <button class="likeButton" style="background: none; border: none; color: white; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 4px;">
+                            <button class="likeButton" style="background: none; border: none; color: white; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 4px;font-size: 1vw;">
                                 <span class="heart-emoji">🤍</span>
                                 <span class="likeCount">${postData.likeCount || 0}</span>
                             </button>
-                            <span>💬 ${postData.messageCount || ''}</span>
+                            <span style="fontsize: 1vw">💬 ${postData.messageCount || ''}</span>
                         </div>
                     </div>
                 </div>

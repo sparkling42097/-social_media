@@ -27,10 +27,6 @@ public class Messagelog {
 	
 	@Column(name = "Super_messagelogID")
 	private Integer supermessagelogid;
-	@Column(name = "Message_time" ,columnDefinition = "TIMESTAMP")
-	private String messagetime;
-	@Column(columnDefinition = "VARCHAR(1000)")
-	private String message;
 	
 	// file傳輸三階段變數
 	@Column(name = "Message_file" ,columnDefinition = "MEDIUMBLOB")
@@ -53,18 +49,6 @@ public class Messagelog {
 	public void setSupermessagelogid(Integer supermessagelogid) {
 		this.supermessagelogid = supermessagelogid;
 	}
-	public String getMessagetime() {
-		return messagetime;
-	}
-	public void setMessagetime(String messagetime) {
-		this.messagetime = messagetime;
-	}
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
 	
 	//---------------------------------------------------------------------
 	public byte[] getMessagefile() {
@@ -74,7 +58,7 @@ public class Messagelog {
 		System.out.println("取回留言板檔案");
 		this.messagefile = messagefile;
 		messagefilebase64 = Base64.getEncoder().encodeToString(messagefile);
-		//System.out.println(messagefilebase64);
+		System.out.println(messagefilebase64);
 	}
 	public MultipartFile getMessagefilefile() {
 		return messagefilefile;

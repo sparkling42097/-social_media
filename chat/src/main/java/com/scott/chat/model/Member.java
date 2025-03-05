@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,16 +38,8 @@ public class Member {
 	@Column(name = "Member_name",columnDefinition = "VARCHAR(30)")
 	private String membername;
 	
-	// 大頭貼傳輸三階段變數
-	@Column(name = "Member_photo" ,columnDefinition = "MEDIUMBLOB")
-	private byte[] memberphoto;
-	@Transient
-	private MultipartFile memberphotofile;
-	@Transient
-	private String memberphotobase64;
-	
-	@Column(columnDefinition = "CHAR(1)")
 	private String gender;
+
 	@Column(columnDefinition = "VARCHAR(30)")
 	private String telephone;
 	@Column(columnDefinition = "DATE")
@@ -54,6 +48,14 @@ public class Member {
 	private String introduce;
 	@Column(name = "Post_count")
 	private Integer postcount;
+	
+	// 大頭貼傳輸三階段變數
+	@Column(name = "Member_photo" ,columnDefinition = "MEDIUMBLOB")
+	private byte[] memberphoto;
+	@Transient
+	private MultipartFile memberphotofile;
+	@Transient
+	private String memberphotobase64;
 	
 	//---------------------------------------------------------------------
 	public Integer getMemberid() {
@@ -86,36 +88,6 @@ public class Member {
 	public void setMembername(String membername) {
 		this.membername = membername;
 	}
-	
-	//---------------------------------------------------------------------
-	public byte[] getMemberphoto() {
-		return memberphoto;
-	}
-	public void setMemberphoto(byte[] memberphoto) {
-		System.out.println("取回大頭貼");
-		this.memberphoto = memberphoto;
-		memberphotobase64 = Base64.getEncoder().encodeToString(memberphoto);
-		//System.out.println(memberphotobase64);
-	}
-	public MultipartFile getMemberphotofile() {
-		return memberphotofile;
-	}
-	public void setMemberphotofile(MultipartFile memberphotofile) {
-		System.out.println("上傳大頭貼...");
-		this.memberphotofile = memberphotofile;
-		try {
-			memberphoto = memberphotofile.getBytes();
-		} catch (Exception e) {
-		}
-	}
-	public String getMemberphotobase64() {
-		return memberphotobase64;
-	}
-	public void setMemberphotobase64(String memberphotobase64) {
-		this.memberphotobase64 = memberphotobase64;
-	}
-	
-	//---------------------------------------------------------------------
 	public String getGender() {
 		return gender;
 	}
@@ -148,6 +120,34 @@ public class Member {
 	}
 	
 	//---------------------------------------------------------------------
+	public byte[] getMemberphoto() {
+		return memberphoto;
+	}
+	public void setMemberphoto(byte[] memberphoto) {
+		System.out.println("取回大頭貼");
+		this.memberphoto = memberphoto;
+		memberphotobase64 = Base64.getEncoder().encodeToString(memberphoto);
+		System.out.println(memberphotobase64);
+	}
+	public MultipartFile getMemberphotofile() {
+		return memberphotofile;
+	}
+	public void setMemberphotofile(MultipartFile memberphotofile) {
+		System.out.println("上傳大頭貼...");
+		this.memberphotofile = memberphotofile;
+		try {
+			memberphoto = memberphotofile.getBytes();
+		} catch (Exception e) {
+		}
+	}
+	public String getMemberphotobase64() {
+		return memberphotobase64;
+	}
+	public void setMemberphotobase64(String memberphotobase64) {
+		this.memberphotobase64 = memberphotobase64;
+	}
+	
+	//---------------------------------------------------------------------
 //	// 1對多，Post
 //	@OneToMany(mappedBy = "member" ,cascade = CascadeType.ALL)
 //	private List<Post> post;
@@ -158,15 +158,15 @@ public class Member {
 //		this.post = post;
 //	}
 //	
-	// 1對多，Chatlog
-	@OneToMany(mappedBy = "member" ,cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
-	private List<Chatlog> chatlog;
-	public List<Chatlog> getChatlog() {
-		return chatlog;
-	}
-	public void setChatlog(List<Chatlog> chatlog) {
-		this.chatlog = chatlog;
-	}
+//	// 1對多，Chatlog
+//	@OneToMany(mappedBy = "member" ,cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
+//	private List<Chatlog> chatlog;
+//	public List<Chatlog> getChatlog() {
+//		return chatlog;
+//	}
+//	public void setChatlog(List<Chatlog> chatlog) {
+//		this.chatlog = chatlog;
+//	}
 //	
 //	// 多對多，Collect
 //	@ManyToMany(cascade = CascadeType.ALL)
@@ -187,23 +187,23 @@ public class Member {
 //		this.collect = collect;
 //	}
 //
-	// 多對多，Chatroom
-	@ManyToMany(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
-	@JoinTable(
-		    name = "member_chatroom",
-		    joinColumns = @JoinColumn(
-		    		name = "MemberID",
-		    		columnDefinition = "INT(30) UNSIGNED"),
-		    inverseJoinColumns = @JoinColumn(
-		    		name = "ChatroomID",
-		    		columnDefinition = "INT(30) UNSIGNED")
-			)
-    private Set<Chatroom> chatroom = new HashSet<>();
-	public Set<Chatroom> getChatroom() {
-		return chatroom;
-	}
-	public void setChatroom(Set<Chatroom> chatroom) {
-		this.chatroom = chatroom;
-	}
+//	// 多對多，Chatroom
+//	@ManyToMany(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
+//	@JoinTable(
+//		    name = "member_chatroom",
+//		    joinColumns = @JoinColumn(
+//		    		name = "MemberID",
+//		    		columnDefinition = "INT(30) UNSIGNED"),
+//		    inverseJoinColumns = @JoinColumn(
+//		    		name = "ChatroomID",
+//		    		columnDefinition = "INT(30) UNSIGNED")
+//			)
+//    private Set<Chatroom> chatroom = new HashSet<>();
+//	public Set<Chatroom> getChatroom() {
+//		return chatroom;
+//	}
+//	public void setChatroom(Set<Chatroom> chatroom) {
+//		this.chatroom = chatroom;
+//	}
 
 }

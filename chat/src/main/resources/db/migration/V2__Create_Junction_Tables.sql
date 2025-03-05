@@ -13,7 +13,6 @@ CREATE TABLE member_collect (
 CREATE TABLE member_chatroom (
     MemberID INT(30) UNSIGNED NOT NULL,
     ChatroomID INT(30) UNSIGNED NOT NULL,
-    Last_read_time timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (MemberID, ChatroomID),
     FOREIGN KEY (MemberID) REFERENCES member(MemberID) ON DELETE CASCADE,
     FOREIGN KEY (ChatroomID) REFERENCES chatroom(ChatroomID) ON DELETE CASCADE

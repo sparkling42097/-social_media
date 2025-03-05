@@ -17,7 +17,7 @@ article {
 .memberphotospace {
     width: 30px;
     height: 30px;
-    font-size: 1vw;
+    font-size: 0.7vw;
     /* background-color: green; */
     flex-shrink: 0;  /* 防止壓縮 */
 }
@@ -36,7 +36,7 @@ article {
     left: 0;
     width: auto;  /* 讓寬度自適應內容 */
     height: 30px;
-    font-size: 1.1vw;
+    font-size: 0.7vw;
     /* background-color: blue; */
     display: flex;
     align-items: center;
@@ -108,7 +108,7 @@ article {
 
 .dcrespond {
     /* position: relative; */
-    left: 2%;
+    left: 5%;
     margin-bottom: 10px;
     background-color: transparent;
     /* background-color: rgb(0, 255, 85); */
